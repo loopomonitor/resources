@@ -1,0 +1,31 @@
+{
+  "name": "Loop",
+  "version": "0.0.3",
+  "description": "Loop monitora a sua conexão, avalia e acompanha o tráfego recebido e enviado, verificando se está de acordo com as normas da Anatel. Fornecendo informações para você e seu provedor em tempo real!",
+  "main": "loop.js",
+  "scripts": {
+    "start": "electron loop.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loopomonitor/connection.git"
+  },
+  "author": {
+    "name": "Luann Peixe",
+    "email": "hi@luannpeixe.com.br",
+    "url": "https://www.luannpeixe.com.br"
+  },
+  "bugs": {
+    "url": "https://github.com/loopomonitor/connection/issues"
+  },
+  "homepage": "https://www.loopmonitor.com.br",
+  "devDependencies": {
+    "electron-prebuilt": "^1.2.1"
+  },
+  "dependencies": {
+    "electron-sudo": "^3.0.5",
+    "jquery": "^2.2.4",
+    "twit": "^2.2.4",
+    "xmlhttprequest": "^1.8.0"
+  }
+}

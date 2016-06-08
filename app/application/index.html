@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="utf-8" />
+    <title>Loop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="loop/css/loop-icons.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,300italic,400italic,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link class="main-stylesheet" href="loop/css/loop.min.css" rel="stylesheet" type="text/css" />
+    <!--[if lte IE 9]>
+    <link href="loop/css/ie9.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+  </head>
+  <body class="fixed-header">
+
+    <div class="modal fade slide-up disable-scroll" id="modalUrl" tabindex="-1" role="dialog" aria-hidden="false">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content-wrapper">
+          <div class="modal-content">
+            <div class="modal-body text-center m-t-20">
+              <h5 class="no-margin p-b-10" style="font-size: 14px;">Para melhor visualização do conteúdo,<br />você será <span style="font-weight: 400;">direcionado</span> para nosso site!<br />Isso acontecerá em <span id="countOpen" style="font-weight: 400;"></span> segundos.</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade slide-up disable-scroll" id="modalReachable" tabindex="-1" role="dialog" aria-hidden="false">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content-wrapper">
+          <div class="modal-content">
+            <div class="modal-header clearfix text-left" style="margin-top: -20px;margin-right: -15px;">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
+                  </button>
+            </div>
+            <div class="modal-body text-center">
+              <h5 class="no-margin" style="font-size: 16px;">Parece que você está sem internet ou estamos enfrentando algum problema em nossos servidores :(</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade slide-up disable-scroll" id="modalUpdate" tabindex="-1" role="dialog" aria-hidden="false" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content-wrapper">
+          <div class="modal-content">
+            <div class="modal-header clearfix text-left" style="margin-top: -10px">
+              <button type="button" class="close" id="modalUpdateClose" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
+              </button>
+            </div>
+            <div class="modal-body text-center m-t-20" id="update-modalBody">
+              <h5 class="no-margin p-b-10" style="font-size: 15px;"><span style="font-weight: 400;" class="m-b-5">Seu Loop está desatualizado!</span><br />Uma nova versão do Loop está disponível.<br />Conheça as novidades <a href="#" onclick="openBrowser('https://github.com/loopomonitor/connection/commits/master','open');">neste endereço</a>.</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- MODAL SLIDE UP SMALL  -->
+
+    <div class="login-wrapper" style="position: absolute; width: 100%;">
+      <!-- START Login Right Container-->
+      <div class="login-container bg-white">
+        <div class="p-l-50 m-l-20 p-r-50 m-r-20 sm-p-l-15 sm-p-r-15 sm-p-t-40">
+          <center><h3 class="semi-bold no-margin" id="font_name">LOOP</h3></center>
+
+          <div class="login-error"></div>
+          
+          <!-- START Login Form -->
+          <form id="form-login" class="p-t-30" role="form" method="post">
+            <!-- START Form Control-->
+            <div class="form-group">
+              <label>Login</label>
+              <input type="text" name="username" placeholder="Nome de usuário" class="form-control" autofocus>
+            </div>
+            <!-- END Form Control-->
+            <!-- START Form Control-->
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" class="form-control" name="password" placeholder="Senha">
+            </div>
+            <!-- START Form Control-->
+            <div class="row">
+              <div class="col-md-6">
+                <div class="checkbox ">
+                  <input type="checkbox" name="loggedIn" id="checkbox1">
+                  <label for="checkbox1">Mantenha-me conectado</label>
+                </div>
+              </div>
+              <div class="col-md-6 text-right">
+                <a href="#" onclick="openBrowser('https://www.loopmonitor.com.br/panel/register');" class="small">Novo aqui? Cadastre-se</a>
+              </div>
+            </div>
+            <!-- END Form Control-->
+            <button class="btn btn-info btn-cons m-t-10" type="submit">Entrar <span class="pull-right"><i class="fa fa-sign-in"></i></span></button>
+          </form>
+          <!--END Login Form-->
+        </div>
+      </div>
+      <!-- END Login Right Container-->
+    </div>
+    <!-- START COPYRIGHT -->
+    <div class="container-fluid container-fixed-lg footer" style="bottom: 0; position: absolute; width: 100%;">
+      <div class="pull-bottom sm-pull-bottom">
+        <div class="p-r-80 sm-p-r-15 m-l-15 clearfix">
+          <div class="col-sm-9 no-padding">
+            <p>
+              <center>
+                <small>2016 &copy; <strong>Loop</strong> - Todos os direitos reservados</small>
+              </center>
+              <small>
+               <center><a href="#" onclick="openBrowser('https://www.loopmonitor.com.br/contact');">Fale Conosco</a> • <a href="#" onclick="openBrowser('https://www.loopmonitor.com.br/privacy');">Política de Privacidade</a> • <a href="#" onclick="openBrowser('https://www.loopmonitor.com.br/terms-of-use');">Termos de Uso</a></center>
+              </small>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="pull-bottom sm-pull-bottom">
+        <div class="no-padding clearfix">
+          <div class="col-sm-12 m-t-20 p-r-10 text-right">
+            <p>
+              <small>
+                v0.0.3-beta
+              </small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END COPYRIGHT -->
+    <!-- BEGIN JS -->
+    <script src="loop/js/main.js"></script>
+    <script src="loop/js/ws.js"></script>
+    <script src="assets/plugins/pace/pace.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/boostrapv3/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="loop/js/loop.min.js"></script>
+    <script type="text/javascript">
+      $(window).load(verifyUpdate('3','home'));
+    </script>
+    <!-- END JS -->
+  </body>
+</html>

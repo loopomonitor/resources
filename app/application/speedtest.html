@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="utf-8" />
+    <title>Loop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/jquery-scrollbar/jquery.scrollbar.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="loop/css/loop-icons.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,300italic,400italic,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link class="main-stylesheet" href="loop/css/loop.min.css" rel="stylesheet" type="text/css" />
+    <!--[if lte IE 9]>
+    <link href="assets/plugins/codrops-dialogFx/dialog.ie.css" rel="stylesheet" type="text/css" media="screen" />
+    <![endif]-->
+  </head>
+  <body class="fixed-header ">
+
+    <div class="modal fade slide-up disable-scroll" id="modalUrl" tabindex="-1" role="dialog" aria-hidden="false">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content-wrapper">
+            <div class="modal-content">
+              <div class="modal-body text-center m-t-20">
+                <h5 class="no-margin p-b-10" style="font-size: 14px;">Para melhor visualização do conteúdo,<br />você será <span style="font-weight: 400;">direcionado</span> para nosso site!<br />Isso acontecerá em <span id="countOpen" style="font-weight: 400;"></span> segundos.</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="modal fade slide-up disable-scroll" id="modalReachable" tabindex="-1" role="dialog" aria-hidden="false">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content-wrapper">
+          <div class="modal-content">
+            <div class="modal-header clearfix text-left" style="margin-top: -20px;margin-right: -15px;">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
+                  </button>
+            </div>
+            <div class="modal-body text-center">
+              <h5 class="no-margin" style="font-size: 16px;">Parece que você está sem internet ou estamos enfrentando algum problema em nossos servidores :(</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade slide-up disable-scroll" id="mudalSupostoErro" tabindex="-1" role="dialog" aria-hidden="false" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content-wrapper">
+          <div class="modal-content">
+            <div class="modal-header clearfix text-left" style="margin-top: -20px;margin-right: -15px;">
+              <button type="button" class="close" id="mudalSupostoErro-close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
+              </button>
+            </div>
+            <div class="modal-body text-center m-t-20" id="supostoerro-modalBody">
+              <h5 class="no-margin" style="font-size: 15px;"><span style="font-weight: 400;" id="error">Parece que algo deu errado</span></h5>
+              <br />
+              <div style="font-size: 14px; text-align: justify; margin-top: -10px;">O Loop parece não ter conseguido se conectar com suas dependências. Se nos próximos minutos nada mudar, será necessário reexecuta-lo e/ou reiniciar o computador. Pedimos desculpas e esperamos que possa compreender que por se tratar de uma versão beta, alguns erros podem surgir. No entanto, estamos trabalhando para que você tenha uma ótima experiência. Em caso de persistência do erro, <a href="#" onclick="openBrowser('https://www.loopmonitor.com.br/contact','open');">fale conosco</a> através do nosso site.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade slide-up disable-scroll" id="modalUpdate" tabindex="-1" role="dialog" aria-hidden="false" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content-wrapper">
+          <div class="modal-content">
+            <div class="modal-header clearfix text-left" style="margin-top: -10px">
+              <button type="button" class="close" id="modalUpdateClose" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
+              </button>
+            </div>
+            <div class="modal-body text-center m-t-20" id="update-modalBody">
+              <h5 class="no-margin p-b-10" style="font-size: 15px;"><span style="font-weight: 400;" class="m-b-5">Seu Loop está desatualizado!</span><br />Uma nova versão do Loop está disponível.<br />Conheça as novidades <a href="#" onclick="openBrowser('https://github.com/loopomonitor/connection/commits/master','open');">neste endereço</a>.</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade slide-up disable-scroll" id="modalTwitter" tabindex="-1" role="dialog" aria-hidden="false" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content-wrapper">
+          <div class="modal-content">
+            <div class="modal-body text-center m-t-20 modalTwitter"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade slide-up disable-scroll" id="modalLiked" tabindex="-1" role="dialog" aria-hidden="false" data-backdrop="static">
+      <div class="modal-dialog">
+        <div class="modal-content-wrapper">
+          <div class="modal-content">
+            <div class="modal-body m-t-20">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
+              </button>
+              <h5 class="p-b-10">Gostou do <span class="semi-bold">Loop?</span></h5>
+              <form role="form" id="form-likedLoop" method="post">
+                <div class="feedback-form"></div>
+                <div class="form-group-attached">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <textarea class="form-control" id="text-likedLoop" placeholder="Descreva sua experiência com o Loop." name="mensagem" style="max-width: 280px; height: 200px; max-height: 300px;"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12 m-t-10 sm-m-t-10">
+                      <button type="submit" class="btn btn-info btn-block m-t-5 sentEmail">Enviar</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade slide-up disable-scroll" id="modalBugs" tabindex="-1" role="dialog" aria-hidden="false" data-backdrop="static">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content-wrapper">
+          <div class="modal-content">
+            <div class="modal-body m-t-20">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
+              </button>
+              <h5 class="p-b-10">Relatar <span class="semi-bold">Problemas</span></h5>
+              <form role="form" id="form-reportBug" method="post">
+                <div class="feedback-form"></div>
+                <div class="form-group-attached">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <textarea class="form-control" id="text-reportBug" name="mensagem1" placeholder="Algo está errado? Deixe-nos saber." style="max-width: 280px; height: 200px; max-height: 300px;"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12 m-t-10 sm-m-t-10">
+                      <button type="Submit" class="btn btn-info btn-block m-t-5 sentEmail">Enviar</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade slide-up disable-scroll" id="modalSuggestion" tabindex="-1" role="dialog" aria-hidden="false" data-backdrop="static">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content-wrapper">
+          <div class="modal-content">
+            <div class="modal-body m-t-20">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
+              </button>
+              <h5 class="p-b-10">Sugerir <span class="semi-bold">Mudanças</span></h5>
+              <form role="form" id="form-suggestChanges" method="post">
+                <div class="feedback-form"></div>
+                <div class="form-group-attached">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <textarea class="form-control" id="text-suggestChanges" name="mensagem2" placeholder="O que você gostaria de nos sugerir?" style="max-width: 280px; height: 200px; max-height: 300px;"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12 m-t-10 sm-m-t-10">
+                      <button type="submit" class="btn btn-info btn-block m-t-5 sentEmail">Enviar</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade slide-up disable-scroll" id="modalLoop" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content-wrapper">
+          <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
+              </button>
+              <h5>Iniciar Monitoramento</h5>
+            </div>
+            <div class="modal-body">
+              <p class="no-margin text-justify">Para que possamos proporcionar uma melhor experiência, pedimos que seu computador esteja conectado a um conexão cabeada e que durante o Monitoramento, não sejam realizados downloads ou uploads de arquivos. Você está de acordo?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-info btn-cons btn-ok2 pull-left inline" onclick="cron();" data-dismiss="modal">Sim</button>
+              <button type="button" class="btn btn-default btn-cons pull-right inline" data-dismiss="modal">Não</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BEGIN SIDEBPANEL-->
+    <nav class="page-sidebar" data-loop="sidebar" style="background-color: #272B35;">
+      <!-- BEGIN SIDEBAR MENU TOP TRAY CONTENT-->
+      <!-- END SIDEBAR MENU HEADER-->
+      <!-- START SIDEBAR MENU -->
+      <div class="sidebar-menu">
+        <div class="sidebar-overlay-slide" style="margin-top: -50px;">
+        </div>
+      </div>
+      <!-- END SIDEBAR MENU -->
+    </nav>
+    <!-- END SIDEBAR -->
+
+    <!-- START PAGE-CONTAINER -->
+    <div class="page-container ">
+      <!-- START HEADER -->
+      <div class="header ">
+        <!-- START MOBILE CONTROLS -->
+        <div class="container-fluid relative">
+          <div class="pull-left full-height visible-sm visible-xs">
+            <div class="header-inner">
+              <a href="#" class="btn-link toggle-sidebar visible-sm-inline-block visible-xs-inline-block padding-5" data-toggle="sidebar">
+                <span class="icon-set grid-box"></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="pull-center">
+            <div class="header-inner">
+              <div class="brand inline">
+                <h3 class="semi-bold no-margin" id="font_name">LOOP</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="dropdown pull-right">
+            <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top: 14px;">
+              <span class="icon-set menu-hambuger"></span>
+            </button>
+            <ul class="dropdown-menu profile-dropdown" role="menu" style="margin-top: 5px;">
+              <li>
+                <a href="#" onclick="openBrowser('https://www.loopmonitor.com.br/panel/settings/')"><i class="fa fa-gear" style="min-width: 13px; text-align: center;"></i> Configurações</a>
+              </li>
+              <li>
+                <a href="#" type="button" data-toggle="modal" data-target="#modalLiked"><i class="fa fa-paper-plane-o" style="min-width: 13px; text-align: center;"></i> Gostou do Loop?</a>
+              </li>
+              <li>
+                <a href="#" type="button" data-toggle="modal" data-target="#modalSuggestion"><i class="fa fa-lightbulb-o" style="min-width: 13px; text-align: center;"></i> Sugerir Mudanças</a>
+              </li>
+              <li>
+                <a href="#" type="button" data-toggle="modal" data-target="#modalBugs"><i class="fa fa-bug" style="min-width: 13px; text-align: center;"></i> Relatar Problemas</a>
+              </li>
+              <li class="bg-master-lighter">
+                <a href="#" onclick="logout();" class="clearfix">
+                  <span class="pull-left">Sair</span>
+                  <span class="pull-right"><i class="pg-power"></i></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- END MOBILE CONTROLS -->
+      </div>
+      <!-- END HEADER -->
+      <!-- START PAGE CONTENT WRAPPER -->
+      <div class="page-content-wrapper bg-white">
+        <!-- START PAGE CONTENT -->
+        <div class="content ">
+          <!-- START JUMBOTRON -->
+          <div class="jumbotron" data-loop="parallax">
+            <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+              <div class="inner">
+                <!-- START BREADCRUMB -->
+                <ul class="breadcrumb">
+                  <li>
+                    <p class="profile-name"></p>
+                  </li>
+                </ul>
+                <!-- END BREADCRUMB -->
+              </div>
+            </div>
+          </div>
+          <!-- END JUMBOTRON -->
+          <!-- START CONTAINER FLUID -->
+          <div class="container-fluid container-fixed-lg">
+            <!-- BEGIN PlACE PAGE CONTENT HERE -->
+              <div class="panel-body" style="margin-top: -20px;">
+                <div class="row">
+                  <div class="col-xs-12 text-center m-b-15 graphic-top">
+                    <div class="download-loading"><div class="ball-1"></div><div class="ball-2"></div></div>
+                    <span class="download-speed">-- --</span>
+                    <div class="type-test"><strong>DOWNLOAD</strong> (Mbit/s)</div>
+                  </div>
+                  <div class="col-xs-6 text-center m-b-15 graphic-bottom" style="border-right: 1px solid #cecece;">
+                    <div class="upload-loading"><div class="ball-1"></div><div class="ball-2"></div></div>
+                    <span class="upload-speed">-- --</span>
+                    <div class="type-test"><strong>UPLOAD</strong> (Mbit/s)</div>
+                  </div>
+                  <div class="col-xs-6 text-center m-b-15 graphic-bottom">
+                    <div class="latency-loading"><div class="ball-1"></div><div class="ball-2"></div></div>
+                    <span class="latency-speed">-- --</span>
+                    <div class="type-test"><strong>LATÊNCIA</strong> (ms)</div>
+                  </div>
+                </div>
+                <div class="console" style="border: 1px solid #ccc;">
+                  <ul class="consolePrint no-margin no-padding"></ul>
+                </div>
+                <button class="btn btn-info btn-cons btn-block m-t-10" id="startTest" type="button" data-toggle="modal" data-target="#modalLoop">Iniciar Monitoramento</button>
+              </div>
+            <!-- END PLACE PAGE CONTENT HERE -->
+          </div>
+          <!-- END CONTAINER FLUID -->
+        </div>
+        <!-- END PAGE CONTENT -->
+        <!-- START COPYRIGHT -->
+        <!-- START CONTAINER FLUID -->
+        <!-- START CONTAINER FLUID -->
+        <div class="container-fluid container-fixed-lg footer">
+          <div class="pull-bottom sm-pull-bottom">
+            <div class="p-r-80 sm-p-r-15 m-l-15 clearfix">
+              <div class="col-sm-9 no-padding">
+                <p>
+                  <center>
+                    <small>2016 &copy; <strong>Loop</strong> - Todos os direitos reservados</small>
+                  </center>
+                  <small>
+                   <center><a href="#" onclick="openBrowser('https://www.loopmonitor.com.br/contact');">Fale Conosco</a> • <a href="#" onclick="openBrowser('https://www.loopmonitor.com.br/privacy');">Política de Privacidade</a> • <a href="#" onclick="openBrowser('https://www.loopmonitor.com.br/terms-of-use');">Termos de Uso</a></center>
+                  </small>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="pull-bottom sm-pull-bottom">
+            <div class="no-padding clearfix">
+              <div class="col-sm-12 m-t-20 p-r-10 text-right">
+                <p>
+                  <small>
+                    v0.0.3-beta
+                  </small>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END COPYRIGHT -->
+      </div>
+      <!-- END PAGE CONTENT WRAPPER -->
+    </div>
+    <!-- END PAGE CONTAINER -->
+    <!-- BEGIN JS -->
+    <script src="loop/js/main.js"></script>
+    <script src="loop/js/ws.js"></script>
+    <script src="assets/plugins/pace/pace.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/boostrapv3/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="loop/js/loop.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      $(window).load(profile('speedtest'),checkTwitter(),verifyUpdate('3'));
+    </script>
+    <!-- END JS -->
+  </body>
+</html>

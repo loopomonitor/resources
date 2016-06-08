@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="utf-8" />
+    <title>Loop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="assets/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="loop/css/loop-icons.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,300italic,400italic,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link class="main-stylesheet" href="loop/css/loop.min.css" rel="stylesheet" type="text/css" />
+    <!--[if lte IE 9]>
+    <link href="assets/plugins/codrops-dialogFx/dialog.ie.css" rel="stylesheet" type="text/css" media="screen" />
+    <![endif]-->
+  </head>
+  <body class="fixed-header bg-menu">
+    <!-- START PAGE-CONTAINER -->
+    <div class="page-container ">
+      <!-- START PAGE CONTENT WRAPPER -->
+      <div class="page-content">
+        <!-- START PAGE CONTENT -->
+
+        <div class="modal fade slide-up disable-scroll" id="modalUrl" tabindex="-1" role="dialog" aria-hidden="false">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content-wrapper">
+              <div class="modal-content">
+                <div class="modal-body text-center m-t-20">
+                  <h5 class="no-margin p-b-10" style="font-size: 14px;">Para melhor visualização do conteúdo,<br />você será <span style="font-weight: 400;">direcionado</span> para nosso site!<br />Isso acontecerá em <span id="countOpen" style="font-weight: 400;"></span> segundos.</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade slide-up disable-scroll" id="modalReachable" tabindex="-1" role="dialog" aria-hidden="false">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content-wrapper">
+              <div class="modal-content">
+                <div class="modal-header clearfix text-left" style="margin-top: -20px;margin-right: -15px;">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
+                      </button>
+                </div>
+                <div class="modal-body text-center">
+                  <h5 class="no-margin" style="font-size: 16px;">Parece que você está sem internet ou estamos enfrentando algum problema em nossos servidores :(</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade slide-up disable-scroll" id="modalUpdate" tabindex="-1" role="dialog" aria-hidden="false" data-backdrop="static" data-keyboard="false">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content-wrapper">
+              <div class="modal-content">
+                <div class="modal-header clearfix text-left" style="margin-top: -10px">
+                  <button type="button" class="close" id="modalUpdateClose" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
+                  </button>
+                </div>
+                <div class="modal-body text-center m-t-20" id="update-modalBody">
+                  <h5 class="no-margin p-b-10" style="font-size: 15px;"><span style="font-weight: 400;" class="m-b-5">Seu Loop está desatualizado!</span><br />Uma nova versão do Loop está disponível.<br />Conheça as novidades <a href="#" onclick="openBrowser('https://github.com/loopomonitor/connection/commits/master','open');">neste endereço</a>.</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content bg-menu-dark text-center" style="padding-top: 7px; height: 49px;">
+          <div class="pull-center">
+            <div class="header-inner">
+              <div class="brand inline">
+                <h3 class="semi-bold no-margin text-white" id="font_name">LOOP</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content">
+          <div class="text-center">
+            <h5 class="text-white p-t-10 p-l-20 p-r-20" id="font_name">Escolha um perfil abaixo</h5>
+          </div>
+          <div class="sidebar-overlay-slide from-top text-center p-l-50 p-r-50">
+          </div>
+        </div>
+        <!-- END PAGE CONTENT -->
+      </div>
+      <!-- END PAGE CONTENT WRAPPER -->
+    </div>
+    <!-- END PAGE CONTAINER -->
+    <!-- BEGIN JS -->
+    <script src="loop/js/main.js"></script>
+    <script src="loop/js/ws.js"></script>
+    <script src="assets/plugins/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/boostrapv3/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript">
+      $(window).load(profile('profile'),verifyUpdate('3'));
+    </script>
+    <!-- END JS -->
+  </body>
+</html>
